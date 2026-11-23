@@ -34,7 +34,7 @@ export default function Page() {
       whatsappMessage="Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes baies vitrées / panneaux solaires à Bouskoura."
       canonicalPath="/nettoyage-vitres-bouskoura"
       benefits={["Villas de prestige & grandes baies", "Nettoyage combiné vitres + panneaux solaires", "Devis express par photos"]}
-      areas={["Bouskoura Ville Verte", "Bouskoura Golf City", "Victoria", "Nouaceur", "Casablanca Sud"]}
+      areas={["Bouskoura Ville Verte", "Bouskoura Golf City", "Victoria", "Casablanca Sud"]}
       details={[
         { title: "Grandes Baies Vitrées de Villas", text: "Nettoyage spécialisé des baies à galandage, verrières et fenêtres grande hauteur sans aucune trace résiduelle." },
         { title: "Panneaux Solaires Résidentiels", text: "Décrassage de vos panneaux photovoltaïques en toiture pour maximiser l'autoconsommation électrique de votre villa." },

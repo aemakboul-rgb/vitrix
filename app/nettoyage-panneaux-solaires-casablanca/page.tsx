@@ -38,7 +38,7 @@ const jsonLd = {
         telephone: "+212705540864",
         url: "https://vitres.online",
       },
-      areaServed: ["Casablanca", "Bouskoura", "Dar Bouazza", "Mohammedia", "Nouaceur"],
+      areaServed: ["Casablanca", "Bouskoura", "Dar Bouazza"],
       description,
     },
     {
@@ -78,7 +78,7 @@ export default function Page() {
         whatsappMessage="Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes panneaux solaires à Casablanca."
         canonicalPath="/nettoyage-panneaux-solaires-casablanca"
         benefits={["+15% à +30% de production d'énergie", "Eau déminéralisée 100% anti-rayures", "Casablanca, Bouskoura & Dar Bouazza"]}
-        areas={["Casablanca", "Bouskoura Ville Verte", "Dar Bouazza", "California", "Ain Sebaa", "Mohammedia", "Nouaceur"]}
+        areas={["Casablanca", "Bouskoura Ville Verte", "Dar Bouazza", "California", "Ain Sebaa"]}
         details={[
           {
             title: "Rentabilité Immédiate",

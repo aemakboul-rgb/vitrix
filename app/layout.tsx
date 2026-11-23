@@ -47,7 +47,6 @@ const structuredData = {
         { "@type": "City", name: "Casablanca" },
         { "@type": "Place", name: "Bouskoura" },
         { "@type": "Place", name: "Dar Bouazza" },
-        { "@type": "Place", name: "Mohammedia" },
       ],
       sameAs: [`https://wa.me/212705540864`],
       contactPoint: {
@@ -77,7 +76,6 @@ const structuredData = {
         { "@type": "City", name: "Casablanca" },
         { "@type": "Place", name: "Bouskoura" },
         { "@type": "Place", name: "Dar Bouazza" },
-        { "@type": "Place", name: "Mohammedia" },
       ],
       audience: {
         "@type": "BusinessAudience",

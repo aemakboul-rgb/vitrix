@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vitres.online/sitemap.xml
-Host: https://vitres.online
+Sitemap: https://www.vitres.online/sitemap.xml

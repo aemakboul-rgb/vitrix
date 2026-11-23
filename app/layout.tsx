@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://vitres.online";
+const SITE_URL = "https://www.vitres.online";
 const GOOGLE_ADS_TAG_ID = "AW-18384169283";
 const SEO_TITLE =
   "VITRIX | Nettoyage Vitres, Façades Commerciales & Panneaux Solaires Casablanca";
@@ -151,9 +151,6 @@ export const metadata: Metadata = {
   authors: [{ name: "VITRIX" }],
   creator: "VITRIX",
   publisher: "VITRIX",
-  other: {
-    "codex-preview": "development",
-  },
   alternates: {
     canonical: "/",
     languages: {

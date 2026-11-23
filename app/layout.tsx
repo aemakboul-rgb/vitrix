@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,7 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://www.vitres.online";
-const GOOGLE_ADS_TAG_ID = "AW-18384169283";
+const GOOGLE_TAG_MANAGER_ID = "GTM-TSSNX4JW";
+const GOOGLE_ADS_CONVERSION_ID = "AW-18384169283";
 const SEO_TITLE =
   "VITRIX | Nettoyage Vitres, Façades Commerciales & Panneaux Solaires Casablanca";
 const SEO_DESCRIPTION =
@@ -213,27 +215,25 @@ export default function RootLayout({
   return (
     <html lang="fr-MA">
       <head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_TAG_ID}`}
-        />
-        <script
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_TAG_ID}');
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GOOGLE_TAG_MANAGER_ID}');
 function gtag_report_conversion(url) {
+  window.dataLayer = window.dataLayer || [];
   var callback = function () {
     if (typeof url !== 'undefined') {
       window.location = url;
     }
   };
-  gtag('event', 'conversion', {
-    'send_to': '${GOOGLE_ADS_TAG_ID}/Ofj9CMORg-AcEMPSoL5E',
+  window.dataLayer.push({
+    'event': 'quote_form_submit',
+    'send_to': '${GOOGLE_ADS_CONVERSION_ID}/Ofj9CMORg-AcEMPSoL5E',
     'value': 1.0,
     'currency': 'MAD',
-    'event_callback': callback
+    'event_callback': callback,
+    'event_timeout': 2000
   });
   return false;
 }`,
@@ -243,6 +243,15 @@ function gtag_report_conversion(url) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GOOGLE_TAG_MANAGER_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

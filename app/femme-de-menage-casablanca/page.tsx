@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SeoServicePage } from "../seo-page";
+import MenageForm from "./form";
 
 const title = "Femme de ménage à Casablanca | Service de ménage à domicile | VITRIX";
 const description = "Vous cherchez une femme de ménage à Casablanca ? Contactez VITRIX pour votre ménage à domicile, à Bouskoura, Dar Bouazza, Nouaceur et Daroua. Devis par WhatsApp.";
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
-    <SeoServicePage
+  return <main><MenageForm /></main>;
+  /* <SeoServicePage
       eyebrow="MÉNAGE À DOMICILE"
       title="Femme de ménage à Casablanca"
       intro="Vous cherchez une aide pour le ménage de votre maison ou appartement ? Contactez VITRIX pour nous présenter vos besoins et recevoir un devis adapté."
@@ -34,6 +34,5 @@ export default function Page() {
         { q: "Quel est le prix du ménage à domicile ?", a: "Le tarif dépend du logement, des tâches demandées et de la durée de l'intervention. Contactez-nous pour un devis personnalisé." },
         { q: "Dans quelles zones intervenez-vous ?", a: "Contactez-nous pour une intervention à Casablanca, Bouskoura, Dar Bouazza, Nouaceur ou Daroua." },
       ]}
-    />
-  );
+    /> */
 }

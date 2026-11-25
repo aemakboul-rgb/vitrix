@@ -26,6 +26,7 @@ export type SeoServicePageProps = {
 };
 
 const otherServices = [
+  { href: "/conseils-nettoyage-casablanca", label: "Conseils et préparation du devis" },
   { href: "/femme-de-menage-casablanca", label: "Femme de ménage à domicile" },
   { href: "/nettoyage-vitres-casablanca", label: "Nettoyage Vitres & Baies" },
   { href: "/nettoyage-facades-alucobond-casablanca", label: "Façades Alucobond" },

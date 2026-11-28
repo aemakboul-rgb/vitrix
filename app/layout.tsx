@@ -17,34 +17,22 @@ const SITE_URL = "https://www.vitres.online";
 const GOOGLE_TAG_MANAGER_ID = "GTM-TSSNX4JW";
 const GOOGLE_ADS_CONVERSION_ID = "AW-18384169283";
 const SEO_TITLE =
-  "VITRIX | Nettoyage Vitres, Façades Commerciales & Panneaux Solaires Casablanca";
+  "Entreprise de nettoyage à Casablanca | VITRIX";
 const SEO_DESCRIPTION =
-  "VITRIX assure le nettoyage professionnel de vitres, vitrines, façades de magasins (Alucobond, enseignes, logos) et panneaux solaires photovoltaïques à Casablanca et alentours. Devis rapide sur WhatsApp.";
+  "Nettoyage de panneaux solaires, vitres et façades, et ménage à domicile à Casablanca et alentours. Consultez les prestations VITRIX et demandez un devis.";
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "LocalBusiness", "HomeAndConstructionBusiness"],
+      "@type": "LocalBusiness",
       "@id": `${SITE_URL}/#organization`,
       name: "VITRIX",
-      legalName: "VITRIX Nettoyage & Entretien",
       url: SITE_URL,
       logo: `${SITE_URL}/vitrix-logo-transparent.png`,
       image: `${SITE_URL}/hero-window-cleaning.webp`,
       description: SEO_DESCRIPTION,
       telephone: "+212705540864",
-      priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Casablanca",
-        addressCountry: "MA",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 33.5731,
-        longitude: -7.5898,
-      },
       areaServed: [
         { "@type": "City", name: "Casablanca" },
         { "@type": "Place", name: "Bouskoura" },
@@ -52,7 +40,6 @@ const structuredData = {
         { "@type": "Place", name: "Nouaceur" },
         { "@type": "Place", name: "Daroua" },
       ],
-      sameAs: [`https://wa.me/212705540864`],
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+212705540864",
@@ -65,15 +52,15 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: "VITRIX - Nettoyage Vitres, Façades & Panneaux Solaires Casablanca",
+      name: "VITRIX",
       inLanguage: "fr-MA",
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#service`,
-      name: "Nettoyage professionnel de vitres, façades et panneaux solaires à Casablanca",
-      serviceType: "Nettoyage de vitrines, panneaux solaires, façades alucobond et enseignes",
+      name: "Services de nettoyage à Casablanca et alentours",
+      serviceType: "Nettoyage de vitres, de façades, de panneaux solaires et ménage à domicile",
       url: SITE_URL,
       provider: { "@id": `${SITE_URL}/#organization` },
       areaServed: [
@@ -83,55 +70,20 @@ const structuredData = {
         { "@type": "Place", name: "Nouaceur" },
         { "@type": "Place", name: "Daroua" },
       ],
-      audience: {
-        "@type": "BusinessAudience",
-        audienceType: "Commerces, bureaux, villas, restaurants et entreprises",
-      },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Services de nettoyage VITRIX",
         itemListElement: [
-          "Nettoyage de vitrines et baies vitrées",
-          "Nettoyage de façades de magasins et panneaux Alucobond",
-          "Nettoyage d'enseignes lumineuses, logos et panneaux publicitaires",
-          "Nettoyage de panneaux solaires photovoltaïques",
-          "Nettoyage de vitres de bureaux et agences",
-          "Contrats d'entretien régulier",
-        ].map((name) => ({
+          ["Nettoyage de vitres et baies vitrées", "/nettoyage-vitres-casablanca"],
+          ["Nettoyage de façades de magasins et panneaux Alucobond", "/nettoyage-facades-alucobond-casablanca"],
+          ["Nettoyage d’enseignes lumineuses et logos", "/nettoyage-enseignes-magasins-casablanca"],
+          ["Nettoyage de panneaux solaires photovoltaïques", "/nettoyage-panneaux-solaires-casablanca"],
+          ["Ménage à domicile", "/femme-de-menage-casablanca"],
+        ].map(([name, path]) => ({
           "@type": "Offer",
-          itemOffered: { "@type": "Service", name },
+          itemOffered: { "@type": "Service", name, url: SITE_URL + path },
         })),
       },
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${SITE_URL}/#faq`,
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Comment obtenir un devis pour le nettoyage de vitres, façades ou panneaux solaires ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Envoyez quelques photos de vos vitres, façades ou panneaux solaires sur WhatsApp. VITRIX prépare une estimation claire et rapide selon la surface et l'accès.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Pourquoi est-il crucial de nettoyer les panneaux solaires à Casablanca ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "La poussière, le sable et les saletés réduisent jusqu'à 30% la production électrique de vos panneaux photovoltaïques. Un nettoyage professionnel permet de retrouver immédiatement le plein rendement.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Nettoyez-vous les façades Alucobond et les enseignes de magasins ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Oui, VITRIX nettoie les panneaux Alucobond, enseignes lumineuses, logos 3D et devantures de magasins pour donner une image éclatante et accueillante à votre établissement.",
-          },
-        },
-      ],
     },
   ],
 };
@@ -142,24 +94,11 @@ export const metadata: Metadata = {
   description: SEO_DESCRIPTION,
   applicationName: "VITRIX",
   category: "services professionnels",
-  keywords: [
-    "nettoyage vitres Casablanca",
-    "nettoyage façade magasin Casablanca",
-    "nettoyage panneau solaire Casablanca",
-    "nettoyage alucobond Casablanca",
-    "nettoyage enseigne lumineuse Casablanca",
-    "nettoyage vitrines Casablanca",
-    "laveur de vitres Casablanca",
-    "VITRIX",
-  ],
   authors: [{ name: "VITRIX" }],
   creator: "VITRIX",
   publisher: "VITRIX",
   alternates: {
     canonical: "/",
-    languages: {
-      "fr-MA": "/",
-    },
   },
   robots: {
     index: true,

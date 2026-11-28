@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://vitres.online/nettoyage-vitres-bureaux-casablanca",
+    url: "https://www.vitres.online/nettoyage-vitres-bureaux-casablanca",
     images: [{ url: "/clean-office-cafe-glass.webp", width: 1200, height: 900, alt: "Nettoyage de vitres de bureaux à Casablanca" }],
   },
 };

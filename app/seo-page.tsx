@@ -1,6 +1,6 @@
-"use client";
 /* eslint-disable @next/next/no-img-element */
 
+import Image from "next/image";
 import { ArrowRight, Check, ChevronRight, MessageCircle, Phone, ShieldCheck, Sparkles } from "lucide-react";
 
 const PHONE_DISPLAY = "07 05 54 08 64";
@@ -30,7 +30,7 @@ const otherServices = [
   { href: "/femme-de-menage-casablanca", label: "Femme de ménage à domicile" },
   { href: "/nettoyage-vitres-casablanca", label: "Nettoyage Vitres & Baies" },
   { href: "/nettoyage-facades-alucobond-casablanca", label: "Façades Alucobond" },
-  { href: "/nettoyage-panneaux-solaires-casablanca", label: "Panneaux Solaires (+30%)" },
+  { href: "/nettoyage-panneaux-solaires-casablanca", label: "Nettoyage de panneaux solaires" },
   { href: "/nettoyage-enseignes-magasins-casablanca", label: "Enseignes & Logos" },
   { href: "/nettoyage-vitrines-magasins-casablanca", label: "Vitrines Magasins" },
   { href: "/nettoyage-vitres-bureaux-casablanca", label: "Vitres Bureaux" },
@@ -111,7 +111,15 @@ export function SeoServicePage({
             </div>
           </div>
           <div className="image-frame seo-image">
-            <img src={image} alt={imageAlt} width="1440" height="960" fetchPriority="high" />
+            <Image
+              src={image}
+              alt={imageAlt}
+              width={1440}
+              height={960}
+              sizes="(max-width: 760px) calc(100vw - 28px), (max-width: 1200px) 50vw, 540px"
+              loading="eager"
+              fetchPriority="high"
+            />
           </div>
         </div>
       </section>
@@ -122,9 +130,8 @@ export function SeoServicePage({
             <p className="eyebrow blue">MÉTHODE EXPERTE VITRIX</p>
             <h2>Une intervention rapide, soignée et sans contrainte</h2>
             <p>
-              Pour toute intervention à Casablanca, Bouskoura et région, il vous suffit de nous envoyer
-              quelques photos ou vidéos sur WhatsApp. Nous vous transmettons un devis précis sous 24h avec
-              des créneaux d&apos;intervention flexibles.
+              Envoyez-nous votre quartier et quelques photos prises depuis un endroit sûr. Nous pourrons
+              évaluer le travail demandé, l&apos;accès et les créneaux disponibles.
             </p>
           </div>
           <div className="seo-cards">
@@ -205,8 +212,8 @@ export function SeoServicePage({
       <section className="final-cta section">
         <div className="shell final-inner">
           <div>
-            <p className="eyebrow">DEVIS RAPIDE ET GRATUIT</p>
-            <h2>Envoyez vos photos sur WhatsApp et recevez votre estimation VITRIX sous 24h.</h2>
+            <p className="eyebrow">DEMANDE DE DEVIS</p>
+            <h2>Décrivez votre besoin sur WhatsApp pour obtenir votre devis.</h2>
           </div>
           <div className="final-actions">
             <a className="button button-green" href={whatsappUrl} target="_blank" rel="noreferrer">

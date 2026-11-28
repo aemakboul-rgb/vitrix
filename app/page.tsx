@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -33,7 +34,7 @@ import {
 const PHONE_DISPLAY = "07 05 54 08 64";
 const PHONE_LINK = "+212705540864";
 const WHATSAPP_MESSAGE =
-  "Bonjour VITRIX, je souhaite recevoir un devis gratuit pour mes vitres, façades ou panneaux solaires.";
+  "Bonjour VITRIX, je souhaite recevoir un devis pour un service de nettoyage.";
 const WHATSAPP_URL = `https://wa.me/${PHONE_LINK.replace(/\D/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 type CardItem = {
@@ -55,12 +56,12 @@ const heroServices = [
     tabTitle: "1. Vitres & Vitrines",
     icon: Store,
     title: "Vitrines & Baies Vitrées",
-    badgeTop: "Sans traces garanties",
+    badgeTop: "Lavage professionnel",
     badgeBottom: "Commerces & Villas",
     image: "/service-vitrines.jpg",
     alt: "Nettoyage professionnel de vitrines de magasins à Casablanca",
-    stats: "Éclat 100%",
-    statsSub: "Zéro reflet trouble",
+    stats: "Vitres & vitrines",
+    statsSub: "Commerces et logements",
   },
   {
     id: "facades",
@@ -79,12 +80,12 @@ const heroServices = [
     tabTitle: "3. Panneaux Solaires",
     icon: Sun,
     title: "Panneaux Solaires",
-    badgeTop: "+30% Rendement",
+    badgeTop: "Entretien photovoltaïque",
     badgeBottom: "Villas & Entreprises",
     image: "/service-panneaux-solaires.jpg",
     alt: "Nettoyage de panneaux solaires photovoltaïques à Casablanca",
-    stats: "+30% Énergie",
-    statsSub: "Plein rendement solaire",
+    stats: "Eau pure",
+    statsSub: "Entretien des panneaux",
   },
 ];
 
@@ -112,9 +113,9 @@ const services: CardItem[] = [
   },
   {
     title: "Panneaux Solaires Photovoltaïques",
-    description: "Lavage spécialisé à l'eau pure. Élimine poussière et dépôts pour regagner jusqu'à +30% de rendement énergétique.",
+    description: "Lavage à l’eau pure pour retirer le sable, la poussière et les dépôts sur les modules photovoltaïques.",
     icon: Sun,
-    tag: "Gain énergie +30%",
+    tag: "Entretien photovoltaïque",
     tagType: "amber",
     accent: true,
   },
@@ -147,7 +148,7 @@ const businessTypes: CardItem[] = [
 
 const seoLinks = [
   { href: "/femme-de-menage-casablanca", title: "Femme de ménage à domicile", text: "Ménage pour maison, appartement ou villa : demandez votre devis." },
-  { href: "/nettoyage-panneaux-solaires-casablanca", title: "Panneaux Solaires Casablanca", text: "Nettoyage photovoltaïque à l'eau pure. Gain +30% de rendement." },
+  { href: "/nettoyage-panneaux-solaires-casablanca", title: "Nettoyage de panneaux solaires à Casablanca", text: "Lavage photovoltaïque, entretien et devis selon l'installation." },
   { href: "/nettoyage-facades-alucobond-casablanca", title: "Façades Alucobond Casablanca", text: "Décrassage et rénovation de panneaux composites et bardages." },
   { href: "/nettoyage-enseignes-magasins-casablanca", title: "Enseignes & Logos Magasin", text: "Lavage d'enseignes lumineuses, caissons et lettres 3D." },
   { href: "/nettoyage-vitres-casablanca", title: "Nettoyage Vitres Casablanca", text: "Service complet pour vitres, vitrines et baies vitrées sans traces." },
@@ -228,15 +229,15 @@ export default function Home() {
               <span className="status-dot" /> Devis Express WhatsApp • Casablanca & Région
             </div>
             <h1 id="hero-title">
-              Nettoyage Vitres, Façades & <em>Panneaux Solaires</em>
+              Entreprise de nettoyage <em>à Casablanca</em>
             </h1>
             <p className="hero-lead">
               VITRIX vous accompagne pour le ménage à domicile et le nettoyage professionnel de vitres, façades et panneaux solaires à Casablanca et alentours.
             </p>
             <div className="hero-tags">
-              <span className="hero-tag"><Store size={14} /> Vitres & Vitrines</span>
+              <a className="hero-tag" href="/nettoyage-vitres-casablanca"><Store size={14} /> Vitres & Vitrines</a>
               <span className="hero-tag"><Building2 size={14} /> Façades Alucobond & Enseignes</span>
-              <span className="hero-tag highlight"><Sun size={14} /> Panneaux Solaires (+30% énergie)</span>
+              <a className="hero-tag highlight" href="/nettoyage-panneaux-solaires-casablanca"><Sun size={14} /> Panneaux solaires</a>
               <a className="hero-tag" href="/femme-de-menage-casablanca"><House size={14} /> Femme de ménage</a>
             </div>
             <div className="hero-actions">
@@ -266,9 +267,9 @@ export default function Home() {
               <span><Check size={17} /> Service ponctuel ou contrat régulier</span>
             </div>
             <div className="hero-proof" aria-label="Points forts VITRIX">
-              <span><strong>+30%</strong><small>Rendement solaire max</small></span>
+              <span><strong>Eau pure</strong><small>Nettoyage photovoltaïque</small></span>
               <span><strong>Alucobond</strong><small>Façades, logos & enseignes</small></span>
-              <span><strong>24h</strong><small>Intervention rapide</small></span>
+              <span><strong>Sur devis</strong><small>Selon votre besoin</small></span>
             </div>
           </div>
 
@@ -293,13 +294,15 @@ export default function Home() {
             </div>
 
             <div className="image-frame">
-              <img
+              <Image
                 key={heroServices[activeHeroTab].image}
                 src={heroServices[activeHeroTab].image}
                 alt={heroServices[activeHeroTab].alt}
-                width="1440"
-                height="1080"
-                fetchPriority="high"
+                width={1440}
+                height={1080}
+                sizes="(max-width: 760px) calc(100vw - 28px), (max-width: 1200px) 50vw, 560px"
+                loading="eager"
+                fetchPriority={activeHeroTab === 0 ? "high" : "auto"}
                 decoding="async"
               />
               <div className="image-shine" aria-hidden="true" />
@@ -335,7 +338,13 @@ export default function Home() {
           <div className="pillars-grid">
             <article className="pillar-card">
               <div className="pillar-img-wrap">
-                <img src="/femme-menage-vitrix.png" alt="Service de femme de ménage à domicile VITRIX" width="800" height="550" loading="lazy" />
+                <Image
+                  src="/femme-menage-vitrix.png"
+                  alt="Illustration du service de ménage à domicile VITRIX"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 760px) calc(100vw - 28px), (max-width: 1200px) 50vw, 560px"
+                />
                 <span className="pillar-badge">Ménage à domicile</span>
               </div>
               <div className="pillar-body">
@@ -360,7 +369,7 @@ export default function Home() {
               <div className="pillar-body">
                 <div className="pillar-header">
                   <span className="icon-box"><Store size={22} /></span>
-                  <h3>Vitrines & Baies Vitrées</h3>
+                  <h3><a href="/nettoyage-vitres-casablanca">Nettoyage de vitres & vitrines</a></h3>
                 </div>
                 <p>Lavage professionnel sans trace pour magasins, showrooms, vitres de bureaux et baies vitrées de villas. Traitement anti-poussière et clarté absolue.</p>
                 <ul className="pillar-features">
@@ -423,22 +432,22 @@ export default function Home() {
                   height="550"
                   loading="lazy"
                 />
-                <span className="pillar-badge badge-amber">+30% Rendement</span>
+                <span className="pillar-badge badge-amber">Entretien photovoltaïque</span>
               </div>
               <div className="pillar-body">
                 <div className="pillar-header">
                   <span className="icon-box amber"><Sun size={22} /></span>
-                  <h3>Panneaux Solaires</h3>
+                  <h3><a href="/nettoyage-panneaux-solaires-casablanca">Nettoyage de panneaux solaires</a></h3>
                 </div>
-                <p>Lavage spécialisé à l&apos;eau pure osmosée pour éliminer poussières, sable et fientes. Augmentez directement votre production d&apos;électricité jusqu&apos;à 30%.</p>
+                <p>Lavage à l&apos;eau pure pour retirer les poussières, le sable et les fientes, selon l&apos;état et l&apos;accès à l&apos;installation.</p>
                 <ul className="pillar-features">
                   <li><Check size={16} /> Villas résidentielles, fermes & hangars</li>
                   <li><Check size={16} /> Eau déminéralisée sans produits abrasifs</li>
-                  <li><Check size={16} /> Gain immédiat sur votre facture électrique</li>
+                  <li><Check size={16} /> Devis selon le nombre de panneaux et l&apos;accès</li>
                 </ul>
                 <a
                   className="button button-sm button-green pillar-btn"
-                  href={`https://wa.me/${PHONE_LINK.replace(/\D/g, "")}?text=${encodeURIComponent("Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes panneaux solaires (+30% rendement).")}`}
+                  href={`https://wa.me/${PHONE_LINK.replace(/\D/g, "")}?text=${encodeURIComponent("Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes panneaux solaires.")}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -453,8 +462,8 @@ export default function Home() {
       <section className="value-strip">
         <div className="shell value-inner">
           <p className="eyebrow">IMAGE & RENDEMENT ÉNERGÉTIQUE</p>
-          <h2>Une façade éclatante et des panneaux solaires à pleine puissance.</h2>
-          <p>Nous éliminons poussière, calcaire, pollution et fientes pour sublimer votre devanture commerciale et rentabiliser votre installation solaire.</p>
+          <h2>Entretenez vos façades et vos panneaux solaires.</h2>
+          <p>Nous adaptons la méthode de nettoyage à la surface, aux dépôts et à l’accessibilité de votre installation.</p>
         </div>
       </section>
 
@@ -495,21 +504,18 @@ export default function Home() {
           </div>
           <div className="impact-grid">
             <article className="impact-card solar">
-              <span className="impact-stat">+30%</span>
               <span className="icon-box amber"><Sun size={24} /></span>
               <h3>Rendement Énergétique Solaire</h3>
-              <p>À Casablanca et sa région, le sable et la poussière forment une couche qui bloque les rayons. Un lavage spécialisé à l&apos;eau pure vous fait regagner immédiatement jusqu&apos;à 30% d&apos;électricité produite.</p>
+              <p>Le nettoyage retire les dépôts qui empêchent une partie de la lumière d’atteindre les modules. L’effet sur la production dépend notamment de l’encrassement et des conditions d’ensoleillement.</p>
             </article>
             <article className="impact-card facade">
-              <span className="impact-stat">1er</span>
               <span className="icon-box"><Building2 size={24} /></span>
               <h3>Façades, Enseignes & Logos Éclatants</h3>
               <p>Votre devanture commerciale (Alucobond, enseigne lumineuse, panneau d&apos;affichage) est le premier contact avec vos clients. Une façade propre inspire immédiatement confiance et dynamise vos visites.</p>
             </article>
             <article className="impact-card quality">
-              <span className="impact-stat">100%</span>
               <span className="icon-box green"><ShieldCheck size={24} /></span>
-              <h3>Technique Pro & Sécurité Totale</h3>
+              <h3>Une méthode adaptée à l’accès</h3>
               <p>Équipements télescopiques haute portée, raclettes professionnelles et produits écologiques adaptés sans aucun risque de rayure sur vos vitres, vos cellules photovoltaïques ou vos finitions métalliques.</p>
             </article>
           </div>
@@ -649,7 +655,7 @@ export default function Home() {
                 <option value="Nettoyage Vitrines & Baies Vitrées">Nettoyage Vitrines & Baies Vitrées</option>
                 <option value="Façades Commerciales (Alucobond & Devantures)">Façades Commerciales (Alucobond, Bardage)</option>
                 <option value="Enseignes Lumineuses, Logos & Panneaux">Enseignes Lumineuses, Logos & Panneaux</option>
-                <option value="Nettoyage Panneaux Solaires (Rendement +30%)">Nettoyage Panneaux Solaires (Gain rendement +30%)</option>
+                <option value="Nettoyage Panneaux Solaires">Nettoyage de panneaux solaires</option>
                 <option value="Contrat d'entretien régulier">Contrat d&apos;entretien régulier (Passages programmés)</option>
               </select>
             </label>
@@ -692,8 +698,8 @@ export default function Home() {
           </div>
           <div className="faq-grid">
             <article>
-              <h3>Pourquoi est-il indispensable de nettoyer les panneaux solaires ?</h3>
-              <p>À Casablanca et sa région, le sable, la poussière et les fientes d&apos;oiseaux créent un voile occultant qui réduit de 15% à 30% l&apos;énergie produite. Un nettoyage professionnel à l&apos;eau déminéralisée permet de retrouver 100% de la puissance de votre installation sans risquer de rayer les cellules.</p>
+              <h3>Quand envisager le nettoyage de panneaux solaires ?</h3>
+              <p>Lorsque des dépôts restent visibles après la pluie ou s’accumulent sur les modules, indiquez-nous leur nombre et l’accessibilité du toit. Consultez <a href="/nettoyage-panneaux-solaires-casablanca">notre service de nettoyage photovoltaïque</a> pour préparer votre devis.</p>
             </article>
             <article>
               <h3>Nettoyez-vous les façades Alucobond et les enseignes lumineuses ?</h3>
@@ -731,7 +737,8 @@ export default function Home() {
       <footer>
         <div className="shell footer-inner">
           <Brand />
-          <p>Nettoyage professionnel de vitres, façades commerciales & panneaux solaires à Casablanca.</p>
+          <p>Nettoyage de vitres, façades et panneaux solaires, et ménage à domicile à Casablanca et alentours.</p>
+          <a href="/conseils-nettoyage-casablanca">Préparer un devis de nettoyage</a>
         </div>
       </footer>
 

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://vitres.online/nettoyage-enseignes-magasins-casablanca",
+    url: "https://www.vitres.online/nettoyage-enseignes-magasins-casablanca",
     images: [{ url: "/service-facades-alucobond.jpg", width: 1200, height: 900, alt: "Nettoyage d'enseigne lumineuse et logo à Casablanca" }],
   },
 };
@@ -35,7 +35,7 @@ const jsonLd = {
         "@type": "LocalBusiness",
         name: "VITRIX",
         telephone: "+212705540864",
-        url: "https://vitres.online",
+        url: "https://www.vitres.online/",
       },
       areaServed: ["Casablanca", "Maarif", "Gauthier", "Ain Sebaa", "Centre-ville"],
       description,

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://vitres.online/nettoyage-vitrines-magasins-casablanca",
+    url: "https://www.vitres.online/nettoyage-vitrines-magasins-casablanca",
     images: [{ url: "/service-vitrines.jpg", width: 1200, height: 900, alt: "Nettoyage de vitrine de magasin à Casablanca" }],
   },
 };

@@ -1,160 +1,96 @@
 import type { Metadata } from "next";
 import { SeoServicePage } from "../seo-page";
 
-const title = "Nettoyage & Lavage de Panneaux Solaires à Casablanca | VITRIX";
+const path = "/nettoyage-panneaux-solaires-casablanca";
+const url = `https://www.vitres.online${path}`;
+const title = "Nettoyage de panneaux solaires à Casablanca | VITRIX";
 const description =
-  "VITRIX, société de nettoyage de panneaux solaires à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua. Lavage photovoltaïque à l'eau pure, brosses douces et devis rapide par WhatsApp.";
+  "Nettoyage de panneaux solaires à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua. Lavage à l’eau déminéralisée pour villas et entreprises. Devis sur WhatsApp.";
+const image = "/service-panneaux-solaires.jpg";
+const imageAlt = "Lavage de panneaux solaires photovoltaïques";
+const areas = ["Casablanca", "Bouskoura", "Dar Bouazza", "Nouaceur", "Daroua"];
 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/nettoyage-panneaux-solaires-casablanca" },
-  keywords: [
-    "nettoyage panneaux solaires Casablanca",
-    "lavage panneau solaire Casablanca",
-    "entretien photovoltaïque Casablanca",
-    "nettoyage photovoltaïque Casablanca",
-    "prix nettoyage panneaux solaires Casablanca",
-    "devis nettoyage panneaux solaires Casablanca",
-    "nettoyage panneaux solaires Bouskoura",
-    "nettoyage panneau solaire Dar Bouazza",
-    "nettoyage panneaux solaires Nouaceur",
-    "nettoyage panneaux solaires Daroua",
-    "société nettoyage panneaux solaires Maroc",
-    "société nettoyage panneaux solaires Casablanca",
-    "entreprise nettoyage panneaux solaires Casablanca",
-    "entreprise entretien photovoltaïque Casablanca",
-    "prestataire nettoyage panneaux solaires Casablanca",
-    "service nettoyage panneaux solaires Casablanca",
-  ],
+  alternates: { canonical: url },
   openGraph: {
+    type: "website",
     title,
     description,
-    url: "https://vitres.online/nettoyage-panneaux-solaires-casablanca",
-    images: [{ url: "/service-panneaux-solaires.jpg", width: 1200, height: 900, alt: "Nettoyage de panneaux solaires à Casablanca" }],
+    url,
+    images: [{ url: image, alt: imageAlt }],
   },
 };
 
-const jsonLd = {
+const serviceData = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      name: "Nettoyage de Panneaux Solaires Photovoltaïques",
-      serviceType: "Nettoyage et entretien de panneaux solaires",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "VITRIX",
-        telephone: "+212705540864",
-        url: "https://vitres.online",
-      },
-      areaServed: ["Casablanca", "Bouskoura", "Dar Bouazza", "Nouaceur", "Daroua"],
-      description,
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Pourquoi nettoyer ses panneaux solaires à Casablanca ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "La poussière, le sable, les embruns et les fientes d'oiseaux réduisent la lumière qui atteint les modules. Un nettoyage professionnel à l'eau pure aide à limiter les pertes liées à l'encrassement.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Quelle technique utilise VITRIX pour ne pas rayer les panneaux ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Nous utilisons de l'eau déminéralisée et des brosses télescopiques à poils doux spécialement conçues pour le photovoltaïque, sans aucun produit corrosif ni nettoyeur haute pression agressif.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Comment est calculé le prix d'un nettoyage de panneaux solaires ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Le devis dépend notamment du nombre de panneaux, de l'accessibilité de la toiture, de la hauteur, du niveau d'encrassement et de la zone d'intervention. Envoyez une photo sur WhatsApp pour recevoir une estimation adaptée.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Dans quelles zones intervenez-vous ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "VITRIX intervient à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua pour les villas, commerces, bureaux et installations photovoltaïques.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Pourquoi choisir une entreprise spécialisée pour le nettoyage photovoltaïque ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Une entreprise spécialisée utilise une méthode adaptée au verre photovoltaïque, à l'accès de la toiture et au niveau d'encrassement. VITRIX propose un devis préalable dans ses zones d'intervention.",
-          },
-        },
-      ],
-    },
-  ],
+  "@type": "Service",
+  "@id": `${url}#service`,
+  name: "Nettoyage de panneaux solaires photovoltaïques",
+  serviceType: "Lavage et entretien de panneaux solaires",
+  url,
+  description,
+  provider: { "@id": "https://www.vitres.online/#organization" },
+  areaServed: areas.map((name) => ({ "@type": "Place", name })),
 };
 
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceData) }} />
       <SeoServicePage
         eyebrow="SOLAIRE & PHOTOVOLTAÏQUE"
-        title="Nettoyage & Lavage de Panneaux Solaires à Casablanca"
-        intro="VITRIX est une société de nettoyage photovoltaïque : lavage à l'eau pure pour villas, entreprises et installations solaires à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua."
-        image="/service-panneaux-solaires.jpg"
-        imageAlt="Nettoyage professionnel de panneaux solaires photovoltaïques à Casablanca"
-        whatsappMessage="Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes panneaux solaires à Casablanca."
-        canonicalPath="/nettoyage-panneaux-solaires-casablanca"
-        benefits={["Eau déminéralisée sans calcaire", "Brosses douces adaptées au photovoltaïque", "5 zones d'intervention autour de Casablanca"]}
-        areas={["Casablanca", "Bouskoura Ville Verte", "Dar Bouazza", "Nouaceur", "Daroua", "California", "Ain Sebaa"]}
+        title="Nettoyage de panneaux solaires à Casablanca"
+        intro="VITRIX, entreprise de nettoyage à Casablanca, assure le lavage de panneaux photovoltaïques pour les villas et les sites professionnels. Nous intervenons aussi à Bouskoura, Dar Bouazza, Nouaceur et Daroua."
+        image={image}
+        imageAlt={imageAlt}
+        whatsappMessage="Bonjour VITRIX, je souhaite un devis pour le nettoyage de mes panneaux solaires. Ville ou quartier :"
+        canonicalPath={path}
+        benefits={["Eau déminéralisée", "Brosses douces", "Passage ponctuel ou entretien périodique"]}
+        areas={areas}
         details={[
           {
-            title: "Production préservée",
-            text: "La poussière, le sable, les embruns et les fientes créent un voile sur le verre. Un lavage régulier aide vos modules à recevoir la lumière dans de meilleures conditions.",
+            title: "Retirer les dépôts sur le verre",
+            text: "Poussière, sable, fientes et embruns peuvent masquer une partie des modules. À Dar Bouazza, par exemple, signalez les dépôts visibles après un épisode de vent côtier.",
           },
           {
-            title: "Eau Pure Déminéralisée",
-            text: "Zéro calcaire, zéro trace et zéro produit abrasif. Nous préservons l'intégrité du verre antireflet et la garantie constructeur de vos panneaux.",
+            title: "Choisir une méthode adaptée aux panneaux",
+            text: "L’équipe utilise de l’eau déminéralisée et des brosses douces adaptées au verre. Si vous avez la référence du module ou sa notice d’entretien, transmettez-la avec votre demande pour tenir compte des consignes du fabricant.",
           },
           {
-            title: "Villas, entreprises & toitures",
-            text: "Notre entreprise intervient sur toitures de villas privées, commerces, bureaux et installations photovoltaïques, avec une méthode adaptée à l'accès de votre site.",
+            title: "Évaluer l’accès à votre installation",
+            text: "Nous examinons les conditions d’accès et la disposition des panneaux avant de confirmer l’intervention. Précisez s’il s’agit d’une terrasse de villa, d’une toiture de bâtiment professionnel ou d’une installation au sol.",
           },
           {
-            title: "Contrats d'Entretien Périodique",
-            text: "Planifiez 2 à 4 passages annuels selon l'exposition de votre site pour maintenir une production énergétique optimale toute l'année.",
+            title: "Planifier un passage ou un entretien régulier",
+            text: "Un lavage ponctuel peut répondre à un encrassement visible. Pour un site où les dépôts reviennent souvent, demandez un calendrier d’entretien adapté à son exposition et à vos contraintes d’accès.",
           },
         ]}
         faqs={[
           {
-            q: "À quelle fréquence faut-il nettoyer les panneaux solaires à Casablanca ?",
-            a: "La fréquence dépend de l'exposition au sable, à la poussière, aux embruns ou aux fientes d'oiseaux. Après un échange sur WhatsApp et quelques photos, VITRIX peut vous conseiller un rythme d'entretien adapté à votre installation.",
+            q: "Quel est le prix du nettoyage de panneaux solaires à Casablanca ?",
+            a: "Le prix dépend du nombre de panneaux, de la hauteur, de l’accès au toit et des dépôts à retirer. Précisez si vous souhaitez un seul passage ou un entretien périodique pour obtenir un devis correspondant à votre installation.",
           },
           {
-            q: "Peut-on nettoyer les panneaux solaires avec un Kärcher ou de l'eau du robinet ?",
-            a: "Non ! La haute pression peut endommager les joints d'étanchéité des cellules, et l'eau du robinet laisse des dépôts de calcaire indélébiles qui diminuent la transparence. VITRIX utilise exclusivement de l'eau pure et des brosses spécifiques.",
+            q: "Quelles informations envoyer pour un devis de lavage photovoltaïque ?",
+            a: "Sur WhatsApp, indiquez votre ville et quartier, le nombre approximatif de modules, le type de toiture et vos disponibilités. Joignez une vue prise depuis un endroit sûr qui montre les panneaux et, si possible, leur accès.",
           },
           {
-            q: "Comment recevoir un devis rapide ?",
-            a: "Envoyez le nombre de panneaux et une photo de votre toiture sur notre WhatsApp (+212 7 05 54 08 64) pour une estimation sous quelques minutes.",
+            q: "À quelle fréquence faut-il entretenir les panneaux photovoltaïques ?",
+            a: "L’exposition et l’état du verre comptent davantage qu’un délai fixe. La poussière d’une zone de travaux, les embruns près du littoral ou des fientes visibles peuvent justifier un passage plus tôt.",
           },
           {
-            q: "Comment est calculé le prix du nettoyage des panneaux solaires ?",
-            a: "Le devis tient compte du nombre de panneaux, de la hauteur, de l'accès au toit, de l'état d'encrassement et de votre zone d'intervention : Casablanca, Bouskoura, Dar Bouazza, Nouaceur ou Daroua. Envoyez une photo pour une estimation adaptée.",
+            q: "La pluie suffit-elle pour nettoyer une installation solaire ?",
+            a: "La pluie peut évacuer une partie de la poussière, mais certains dépôts restent accrochés au verre. Si des traces ou des fientes sont encore visibles, envoyez une photo pour évaluer la situation.",
           },
           {
-            q: "Intervenez-vous à Bouskoura, Dar Bouazza, Nouaceur et Daroua ?",
-            a: "Oui. VITRIX intervient à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua pour les villas, commerces, bureaux et installations photovoltaïques.",
+            q: "Quel gain de production peut-on attendre après le nettoyage ?",
+            a: "L’effet dépend de l’encrassement initial et des conditions d’ensoleillement. En cas de baisse persistante après le lavage, demandez à votre installateur photovoltaïque de vérifier le fonctionnement du système.",
           },
           {
-            q: "VITRIX est-elle une société spécialisée dans le nettoyage de panneaux solaires ?",
-            a: "Oui. VITRIX propose un service de nettoyage et d'entretien photovoltaïque pour villas, entreprises, commerces et toitures équipées à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua.",
+            q: "Dans quelles villes pouvez-vous nettoyer mes panneaux solaires ?",
+            a: "Nous traitons les demandes à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua. Indiquez le quartier et le type de bâtiment pour que nous puissions vérifier l’accès et les créneaux.",
           },
         ]}
       />

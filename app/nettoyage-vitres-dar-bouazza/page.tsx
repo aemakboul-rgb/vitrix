@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://vitres.online/nettoyage-vitres-dar-bouazza",
+    url: "https://www.vitres.online/nettoyage-vitres-dar-bouazza",
     images: [{ url: "/service-vitrines.jpg", width: 1200, height: 900, alt: "Nettoyage de vitres et baies vitrées à Dar Bouazza" }],
   },
 };

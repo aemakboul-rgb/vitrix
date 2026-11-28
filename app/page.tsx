@@ -342,7 +342,7 @@ export default function Home() {
                 <div className="pillar-header"><span className="icon-box green"><House size={22} /></span><h3>Femme de ménage</h3></div>
                 <p>Un service de ménage pour votre maison, appartement ou villa, selon vos besoins.</p>
                 <ul className="pillar-features"><li><Check size={16} /> Ménage ponctuel ou régulier</li><li><Check size={16} /> Choisissez votre ville</li><li><Check size={16} /> Devis adapté à votre logement</li></ul>
-                <a className="button button-sm button-green pillar-btn" href="/femme-de-menage-casablanca">Découvrir et demander un devis <ArrowRight size={16} /></a>
+                <a className="button button-sm button-green pillar-btn" href="/femme-de-menage-casablanca">Découvrir le ménage à domicile <ArrowRight size={16} /></a>
               </div>
             </article>
             {/* Service 1: Vitrines & Baies Vitrées */}

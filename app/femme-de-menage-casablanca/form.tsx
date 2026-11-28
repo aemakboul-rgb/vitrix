@@ -1,7 +1,72 @@
 "use client";
+
 import { type FormEvent } from "react";
-import "./menage.css";
+import { MessageCircle } from "lucide-react";
+import { menageCities, whatsapp } from "./service";
+
 export default function MenageForm() {
-  function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); const d = new FormData(e.currentTarget); const msg = `Bonjour VITRIX, je souhaite un devis pour une femme de ménage.\nNom : ${d.get("nom")}\nTéléphone : ${d.get("telephone")}\nVille : ${d.get("ville")}\nQuartier : ${d.get("quartier")}\nLogement : ${d.get("logement")}\nFréquence : ${d.get("frequence")}\nPrécisions : ${d.get("details") || "Non précisées"}`; window.open(`https://wa.me/212705540864?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer"); }
-  return <div className="mg"><header><a href="/"><img src="/vitrix-logo-transparent.png" alt="VITRIX" /></a><a href="tel:+212705540864">07 05 54 08 64</a></header><section className="mg-hero"><div><small>MÉNAGE À DOMICILE</small><h1>Femme de ménage <em>pour votre maison</em></h1><p>Maison, appartement ou villa : décrivez-nous vos besoins et recevez un devis adapté à votre logement.</p><a className="mg-button" href="#demande">Demander un devis gratuit →</a><p className="mg-trust">✓ Demande simple　 ✓ Devis personnalisé　 ✓ Contact WhatsApp</p></div><img className="mg-photo" src="/femme-menage-vitrix.png" alt="Service de ménage à domicile VITRIX" /></section><section className="mg-info"><small>UN INTÉRIEUR SOIGNÉ</small><h2>Un service adapté à votre quotidien</h2><div className="mg-cards"><article><h3>Votre logement</h3><p>Maison, appartement ou villa : décrivez les espaces et les tâches souhaitées.</p></article><article><h3>Votre rythme</h3><p>Une intervention ponctuelle ou régulière, selon vos besoins.</p></article><article><h3>Votre devis</h3><p>Un devis personnalisé selon le lieu et le travail demandé.</p></article></div></section><section className="mg-request" id="demande"><div><small>PARLONS DE VOTRE BESOIN</small><h2>Demandez votre devis</h2><p>Remplissez le formulaire. Votre demande sera préparée dans WhatsApp, où vous pourrez la vérifier et l’envoyer.</p><p>Casablanca · Bouskoura · Dar Bouazza · Nouaceur · Daroua</p><a href="tel:+212705540864">Ou appelez le 07 05 54 08 64</a></div><form onSubmit={submit}><h3>Votre demande de ménage</h3><div className="mg-fields"><label>Nom<input name="nom" required autoComplete="name" /></label><label>Téléphone<input name="telephone" type="tel" required autoComplete="tel" /></label><label>Ville<select name="ville" required defaultValue=""><option value="" disabled>Choisir votre ville</option>{["Casablanca","Bouskoura","Dar Bouazza","Nouaceur","Daroua"].map(v=><option key={v}>{v}</option>)}</select></label><label>Quartier<input name="quartier" required /></label><label>Logement<select name="logement" required defaultValue=""><option value="" disabled>Choisir</option><option>Appartement</option><option>Maison</option><option>Villa</option><option>Autre</option></select></label><label>Fréquence<select name="frequence" required defaultValue=""><option value="" disabled>Choisir</option><option>Ponctuelle</option><option>Régulière</option><option>À discuter</option></select></label></div><label>Précisions (facultatif)<textarea name="details" rows={3} /></label><button className="mg-button" type="submit">Continuer sur WhatsApp →</button><p className="mg-note">WhatsApp s’ouvrira avec votre demande préremplie.</p></form></section><footer>VITRIX · Ménage à domicile　<a href="/">Retour à l’accueil</a></footer></div>;
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const fields = new FormData(event.currentTarget);
+    const details = String(fields.get("details") ?? "").trim();
+    const message = [
+      "Bonjour VITRIX, je souhaite un devis pour le ménage à domicile.",
+      `Ville : ${fields.get("ville")}`,
+      `Quartier : ${fields.get("quartier")}`,
+      `Logement : ${fields.get("logement")}`,
+      `Fréquence : ${fields.get("frequence")}`,
+      `Nom : ${fields.get("nom")}`,
+      `Téléphone : ${fields.get("telephone")}`,
+      ...(details ? [`Précisions : ${details}`] : []),
+    ].join("\n");
+
+    window.open(`${whatsapp}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    (window as Window & { gtag_report_conversion?: () => void }).gtag_report_conversion?.();
+  }
+
+  return (
+    <section className="mg-quote" id="demande" aria-labelledby="mg-devis">
+      <h2 id="mg-devis">Demander un devis</h2>
+      <p>Décrivez votre besoin, puis envoyez votre demande sur WhatsApp.</p>
+      <form method="post" onSubmit={submit}>
+        <div className="mg-fields">
+          <label>Ville
+            <select name="ville" required defaultValue="">
+              <option value="" disabled>Votre ville</option>
+              {menageCities.map((city) => <option key={city}>{city}</option>)}
+            </select>
+          </label>
+          <label>Quartier
+            <input name="quartier" required maxLength={95} placeholder="Votre quartier" />
+          </label>
+          <label>Type de logement
+            <select name="logement" required defaultValue="">
+              <option value="" disabled>Choisir</option>
+              <option>Appartement</option><option>Maison</option><option>Villa</option><option>Autre</option>
+            </select>
+          </label>
+          <label>Fréquence
+            <select name="frequence" required defaultValue="">
+              <option value="" disabled>Choisir</option>
+              <option>Ponctuelle</option><option>Régulière</option><option>À discuter</option>
+            </select>
+          </label>
+          <label>Nom
+            <input name="nom" required autoComplete="name" maxLength={100} placeholder="Votre nom" />
+          </label>
+          <label>Téléphone
+            <input name="telephone" type="tel" required autoComplete="tel" maxLength={30} placeholder="06 00 00 00 00" />
+          </label>
+        </div>
+        <label>Précisions <span>(facultatif)</span>
+          <textarea name="details" rows={2} maxLength={600} placeholder="Surface, pièces, jour souhaité…" />
+        </label>
+        <button className="mg-submit" type="submit">
+          <MessageCircle size={20} aria-hidden="true" /> Continuer sur WhatsApp
+        </button>
+        <p className="mg-note">Vous pourrez relire et envoyer le message dans WhatsApp.</p>
+      </form>
+      <a className="mg-direct" href={whatsapp} target="_blank" rel="noreferrer">Écrire directement sur WhatsApp</a>
+    </section>
+  );
 }

@@ -13,6 +13,7 @@ import {
   Dumbbell,
   FileCheck2,
   GalleryVerticalEnd,
+  House,
   Images,
   MessageCircle,
   Phone,
@@ -145,6 +146,7 @@ const businessTypes: CardItem[] = [
 ];
 
 const seoLinks = [
+  { href: "/femme-de-menage-casablanca", title: "Femme de ménage à domicile", text: "Ménage pour maison, appartement ou villa : demandez votre devis." },
   { href: "/nettoyage-panneaux-solaires-casablanca", title: "Panneaux Solaires Casablanca", text: "Nettoyage photovoltaïque à l'eau pure. Gain +30% de rendement." },
   { href: "/nettoyage-facades-alucobond-casablanca", title: "Façades Alucobond Casablanca", text: "Décrassage et rénovation de panneaux composites et bardages." },
   { href: "/nettoyage-enseignes-magasins-casablanca", title: "Enseignes & Logos Magasin", text: "Lavage d'enseignes lumineuses, caissons et lettres 3D." },
@@ -229,12 +231,13 @@ export default function Home() {
               Nettoyage Vitres, Façades & <em>Panneaux Solaires</em>
             </h1>
             <p className="hero-lead">
-              VITRIX valorise votre image et optimise votre énergie. Nettoyage professionnel de vitrines, façades de magasins (Alucobond, enseignes, logos) et panneaux solaires photovoltaïques à Casablanca et alentours.
+              VITRIX vous accompagne pour le ménage à domicile et le nettoyage professionnel de vitres, façades et panneaux solaires à Casablanca et alentours.
             </p>
             <div className="hero-tags">
               <span className="hero-tag"><Store size={14} /> Vitres & Vitrines</span>
               <span className="hero-tag"><Building2 size={14} /> Façades Alucobond & Enseignes</span>
               <span className="hero-tag highlight"><Sun size={14} /> Panneaux Solaires (+30% énergie)</span>
+              <a className="hero-tag" href="/femme-de-menage-casablanca"><House size={14} /> Femme de ménage</a>
             </div>
             <div className="hero-actions">
               <a
@@ -324,12 +327,24 @@ export default function Home() {
       <section className="pillars section" id="nos-services" aria-labelledby="pillars-title">
         <div className="shell">
           <div className="section-heading centered">
-            <p className="eyebrow blue">NOS 3 SERVICES PHARES</p>
-            <h2 id="pillars-title">Une Solution Dédiée pour Chaque Surface</h2>
-            <p>Cliquez sur le service de votre choix pour demander un devis instantané sur WhatsApp.</p>
+            <p className="eyebrow blue">NOS SERVICES PHARES</p>
+            <h2 id="pillars-title">Une solution adaptée à vos besoins</h2>
+            <p>Découvrez nos services et demandez votre devis personnalisé.</p>
           </div>
 
           <div className="pillars-grid">
+            <article className="pillar-card">
+              <div className="pillar-img-wrap">
+                <img src="/femme-menage-vitrix.png" alt="Service de femme de ménage à domicile VITRIX" width="800" height="550" loading="lazy" />
+                <span className="pillar-badge">Ménage à domicile</span>
+              </div>
+              <div className="pillar-body">
+                <div className="pillar-header"><span className="icon-box green"><House size={22} /></span><h3>Femme de ménage</h3></div>
+                <p>Un service de ménage pour votre maison, appartement ou villa, selon vos besoins.</p>
+                <ul className="pillar-features"><li><Check size={16} /> Ménage ponctuel ou régulier</li><li><Check size={16} /> Choisissez votre ville</li><li><Check size={16} /> Devis adapté à votre logement</li></ul>
+                <a className="button button-sm button-green pillar-btn" href="/femme-de-menage-casablanca">Découvrir et demander un devis <ArrowRight size={16} /></a>
+              </div>
+            </article>
             {/* Service 1: Vitrines & Baies Vitrées */}
             <article className="pillar-card">
               <div className="pillar-img-wrap">
@@ -629,6 +644,7 @@ export default function Home() {
             </div>
             <label>Service souhaité
               <select name="service" defaultValue="Pack Complet (Vitres + Façade + Enseigne)" required>
+                <option value="Femme de ménage à domicile">Femme de ménage à domicile</option>
                 <option value="Pack Complet (Vitres + Façade + Enseigne)">Pack Complet (Vitres + Façade + Enseigne)</option>
                 <option value="Nettoyage Vitrines & Baies Vitrées">Nettoyage Vitrines & Baies Vitrées</option>
                 <option value="Façades Commerciales (Alucobond & Devantures)">Façades Commerciales (Alucobond, Bardage)</option>
@@ -642,6 +658,7 @@ export default function Home() {
                 <option value="" disabled>Sélectionnez</option>
                 <option>Magasin / Boutique commerciale</option>
                 <option>Villa / Résidence (avec panneaux solaires)</option>
+                <option>Maison / Appartement</option>
                 <option>Showroom / Espace commercial</option>
                 <option>Restaurant / Café</option>
                 <option>Bureau / Siège d&apos;entreprise</option>

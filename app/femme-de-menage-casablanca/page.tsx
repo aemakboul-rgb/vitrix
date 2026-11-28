@@ -12,27 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <main><MenageForm /></main>;
-  /* <SeoServicePage
-      eyebrow="MÉNAGE À DOMICILE"
-      title="Femme de ménage à Casablanca"
-      intro="Vous cherchez une aide pour le ménage de votre maison ou appartement ? Contactez VITRIX pour nous présenter vos besoins et recevoir un devis adapté."
-      image="/clean-office-cafe-glass.webp"
-      imageAlt="Intérieur propre et lumineux"
-      whatsappMessage="Bonjour VITRIX, je souhaite un devis pour une femme de ménage à domicile."
-      canonicalPath="/femme-de-menage-casablanca"
-      benefits={["Ménage de maison et appartement", "Devis adapté à vos besoins", "Contact direct par WhatsApp"]}
-      areas={["Casablanca", "Bouskoura", "Dar Bouazza", "Nouaceur", "Daroua"]}
-      details={[
-        { title: "Ménage à domicile", text: "Présentez-nous votre logement et les tâches de ménage souhaitées pour préparer une intervention adaptée." },
-        { title: "Maison ou appartement", text: "Que vous habitiez une maison ou un appartement, indiquez-nous la surface et les pièces concernées." },
-        { title: "Selon vos besoins", text: "Précisez vos disponibilités et la fréquence souhaitée lors de votre demande de devis." },
-        { title: "Demande simple", text: "Contactez-nous sur WhatsApp avec votre quartier, votre besoin et, si possible, des photos." },
-      ]}
-      faqs={[
-        { q: "Comment demander une femme de ménage à Casablanca ?", a: "Contactez VITRIX par WhatsApp ou par téléphone et indiquez votre quartier, le type de logement et vos besoins." },
-        { q: "Quel est le prix du ménage à domicile ?", a: "Le tarif dépend du logement, des tâches demandées et de la durée de l'intervention. Contactez-nous pour un devis personnalisé." },
-        { q: "Dans quelles zones intervenez-vous ?", a: "Contactez-nous pour une intervention à Casablanca, Bouskoura, Dar Bouazza, Nouaceur ou Daroua." },
-      ]}
-    /> */
+  return <main><MenageForm />
+    <section className="shell section" style={{ maxWidth: 850, lineHeight: 1.8 }} aria-labelledby="menage-faq">
+      <h2 id="menage-faq">Questions sur le ménage à domicile</h2>
+      <h3>Comment demander une femme de ménage ?</h3>
+      <p>Remplissez le formulaire en indiquant votre ville, votre quartier, votre type de logement et la fréquence souhaitée. Votre demande sera préparée dans WhatsApp pour que vous puissiez la vérifier et l’envoyer.</p>
+      <h3>Quel est le prix d’une prestation de ménage ?</h3>
+      <p>Le devis dépend du logement, des tâches demandées et de la durée de l’intervention. Contactez VITRIX pour obtenir une estimation adaptée à vos besoins.</p>
+      <h3>Dans quelles villes intervenez-vous ?</h3>
+      <p>Nous recevons vos demandes à Casablanca, Bouskoura, Dar Bouazza, Nouaceur et Daroua. Les disponibilités sont à confirmer selon votre adresse et vos besoins.</p>
+      <p><a href="/conseils-nettoyage-casablanca">Conseils pour préparer votre demande de devis</a> · <a href="/">Découvrir les services VITRIX</a></p>
+    </section>
+  </main>;
 }

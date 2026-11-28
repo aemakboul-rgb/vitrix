@@ -88,7 +88,7 @@ h1 em { color: var(--blue); font-style: normal; }
 
 /* Pillars 3 Services Showcase */
 .pillars { padding: 80px 0; background: linear-gradient(180deg, #fff 0%, #f6fafd 100%); }
-.pillars-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.pillars-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .pillar-card { display: flex; flex-direction: column; background: white; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 0 12px 34px rgba(8,40,74,.06); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
 .pillar-card:hover { transform: translateY(-5px); border-color: #b0d4ea; box-shadow: 0 22px 50px rgba(8,40,74,.12); }
 .pillar-card-highlight { border-color: #fbd38d; box-shadow: 0 14px 38px rgba(217,119,6,.09); }
